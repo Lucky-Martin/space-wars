@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     Coroutine fireCoroutine;
     AudioSource audioSource;
+    SceneLoader sceneLoader;
 
     float xMin;
     float xMax;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     {
         healtText.text = healt.ToString();
         audioSource = GetComponent<AudioSource>();
+        sceneLoader = FindObjectOfType<SceneLoader>();
         InitBounds();
     }
 
@@ -102,6 +104,8 @@ public class Player : MonoBehaviour
             {
                 audioSource.PlayOneShot(deathSound);
                 healtText.text = "You died!";
+                Destroy(gameObject);
+                sceneLoader.LoadGameOver();
             }
             else
             {
