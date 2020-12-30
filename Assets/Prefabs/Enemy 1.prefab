@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2674000640287175860}
   - component: {fileID: 116573643800483575}
   - component: {fileID: 5174159787523342552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,6 +114,7 @@ MonoBehaviour:
   deathVFX: {fileID: 3436149302963022023, guid: a4f02818f62c4894f882964060da865b,
     type: 3}
   healt: 150
+  score: 15
   laserBullet: {fileID: 7712389670793813602, guid: 0bb334aa6db84b545b751d5fc0c982d8,
     type: 3}
   minTimeBetweenShots: 0.2

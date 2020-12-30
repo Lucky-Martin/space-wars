@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy")]
     [SerializeField] GameObject deathVFX;
     [SerializeField] int healt = 100;
+    [SerializeField] int score = 15;
 
     [Header("Laser")]
     [SerializeField] GameObject laserBullet;
@@ -18,12 +19,14 @@ public class Enemy : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip deathSound;
 
+    GameSession gameSession;
     float shotCounter;
 
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -54,7 +57,10 @@ public class Enemy : MonoBehaviour
                 //Particle animation
                 Destroy(gameObject);
                 GameObject expolision = Instantiate(deathVFX, transform.position, transform.rotation);
+
                 AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
+                gameSession.AddScore(score);
+
                 Destroy(expolision, 1f);
             }
             damageDealer.Hit();
